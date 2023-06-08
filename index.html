@@ -1,1 +1,95 @@
 # Side-scroller-game-NeoCity
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+  <div id="game-container">
+    <div id="character"></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const character = document.getElementById('character');
+      let isJumping = false;
+      let isAttacking = false;
+
+      // Character movements and actions
+      document.addEventListener('keydown', (event) => {
+        switch (event.code) {
+          case 'Space':
+            if (!isJumping) {
+              jump();
+            }
+            break;
+          case 'KeyA':
+            if (!isAttacking) {
+              attack();
+            }
+            break;
+          case 'KeyT':
+            teleport();
+            break;
+        }
+      });
+
+      // Jumping action
+      function jump() {
+        isJumping = true;
+        character.style.backgroundPositionX = '0px'; // Set jump animation frame
+        character.classList.add('jump');
+
+        // After a certain duration, reset the character's state
+        setTimeout(() => {
+          isJumping = false;
+          character.classList.remove('jump');
+        }, 1000); // Adjust the duration as needed
+      }
+
+      // Attacking action
+      function attack() {
+        isAttacking = true;
+        character.style.backgroundPositionX = '-50px'; // Set attack animation frame
+        character.classList.add('attack');
+
+        // After a certain duration, reset the character's state
+        setTimeout(() => {
+          isAttacking = false;
+          character.classList.remove('attack');
+        }, 500); // Adjust the duration as needed
+      }
+
+      // Teleporting action
+      function teleport() {
+        character.style.backgroundPositionX = '-100px'; // Set teleport animation frame
+        character.classList.add('teleport');
+
+        // After a certain duration, reset the character's state
+        setTimeout(() => {
+          character.classList.remove('teleport');
+        }, 500); // Adjust the duration as needed
+      }
+    });
+  </script>
+
+  <style>
+    #game-container {
+      width: 600px;
+      height: 400px;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    #character {
+      width: 50px;
+      height: 50px;
+      background-image: url('character_sprites.png');
+      background-repeat: no-repeat;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+  </style>
+</body>
+</html>
