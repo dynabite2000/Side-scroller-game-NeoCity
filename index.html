@@ -34,6 +34,11 @@
         }
       });
 
+      // Standing action
+      function stand() {
+        character.style.backgroundImage = "url('ApplicationFrameHost_mcu2utAyFe.png')"; // Set standing animation frame
+      }
+
       // Jumping action
       function jump() {
         isJumping = true;
@@ -69,6 +74,9 @@
           // Reset the sprite animation
         }, 500); // Adjust the duration as needed
       }
+
+      // Call the stand function initially
+      stand();
     });
   </script>
 
