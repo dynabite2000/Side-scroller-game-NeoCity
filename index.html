@@ -37,37 +37,36 @@
       // Jumping action
       function jump() {
         isJumping = true;
-        character.style.backgroundPositionX = '0px'; // Set jump animation frame
+        character.style.backgroundImage = "url('ApplicationFrameHost_S5VKI1PRgO.png')"; // Set jump animation frame
         character.classList.add('jump');
 
         // After a certain duration, reset the character's state
         setTimeout(() => {
           isJumping = false;
           character.classList.remove('jump');
+          character.style.backgroundImage = "url('ApplicationFrameHost_XqYyWOjU81.png')"; // Set coming down animation frame
         }, 1000); // Adjust the duration as needed
       }
 
       // Attacking action
       function attack() {
         isAttacking = true;
-        character.style.backgroundPositionX = '-50px'; // Set attack animation frame
-        character.classList.add('attack');
+        // Implement attack logic and sprite animation here
 
         // After a certain duration, reset the character's state
         setTimeout(() => {
           isAttacking = false;
-          character.classList.remove('attack');
+          // Reset the sprite animation
         }, 500); // Adjust the duration as needed
       }
 
       // Teleporting action
       function teleport() {
-        character.style.backgroundPositionX = '-100px'; // Set teleport animation frame
-        character.classList.add('teleport');
+        // Implement teleport logic and sprite animation here
 
         // After a certain duration, reset the character's state
         setTimeout(() => {
-          character.classList.remove('teleport');
+          // Reset the sprite animation
         }, 500); // Adjust the duration as needed
       }
     });
@@ -84,7 +83,7 @@
     #character {
       width: 50px;
       height: 50px;
-      background-image: url('character_sprites.png');
+      background-image: url('ApplicationFrameHost_XqYyWOjU81.png');
       background-repeat: no-repeat;
       position: absolute;
       bottom: 0;
