@@ -14,6 +14,8 @@
       const character = document.getElementById('character');
       let isJumping = false;
       let isAttacking = false;
+      let isMovingLeft = false;
+      let isMovingRight = false;
 
       // Character movements and actions
       document.addEventListener('keydown', (event) => {
@@ -30,6 +32,27 @@
             break;
           case 'KeyT':
             teleport();
+            break;
+          case 'ArrowLeft':
+            if (!isMovingRight) {
+              moveLeft();
+            }
+            break;
+          case 'ArrowRight':
+            if (!isMovingLeft) {
+              moveRight();
+            }
+            break;
+        }
+      });
+
+      document.addEventListener('keyup', (event) => {
+        switch (event.code) {
+          case 'ArrowLeft':
+            stopMovingLeft();
+            break;
+          case 'ArrowRight':
+            stopMovingRight();
             break;
         }
       });
@@ -73,6 +96,32 @@
         setTimeout(() => {
           // Reset the sprite animation
         }, 500); // Adjust the duration as needed
+      }
+
+      // Move left action
+      function moveLeft() {
+        isMovingLeft = true;
+        // Implement move left logic and sprite animation here
+        character.style.transform = "scaleX(-1)"; // Flip the character to face left
+      }
+
+      // Stop moving left action
+      function stopMovingLeft() {
+        isMovingLeft = false;
+        // Reset the sprite animation
+      }
+
+      // Move right action
+      function moveRight() {
+        isMovingRight = true;
+        // Implement move right logic and sprite animation here
+        character.style.transform = "scaleX(1)"; // Flip the character to face right
+      }
+
+      // Stop moving right action
+      function stopMovingRight() {
+        isMovingRight = false;
+        // Reset the sprite animation
       }
 
       // Call the stand function initially
